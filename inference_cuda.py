@@ -61,8 +61,6 @@ class NeuralNetworkCUDA:
 
             output_gpu = cuda.mem_alloc(input_data.nbytes // self.n_input * K)
 
-            cuda.memcpy_htod(input_gpu, input_data)
-
             block_size = (16, 16, 1)
             grid_size = ((B + block_size[0] - 1) // block_size[0],
                          (M + block_size[1] - 1) // block_size[1],
